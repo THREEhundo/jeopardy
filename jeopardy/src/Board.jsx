@@ -3,7 +3,9 @@ const Board = () => {
 }
 
 /***
- * Create 6 rows and
+ * Create 6 rows and 6 columns
+ * Title row
+ * All following rows are questions & $ amount
  *
  * utilize jservice to plug into the api for the questions
  * Limit by category
