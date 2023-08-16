@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './clue.css'
 
 const Clue = ({ value, clue }) => {
 	const [stage, setStage] = useState(0)
@@ -18,7 +19,11 @@ const Clue = ({ value, clue }) => {
 	}
 	return (
 		<div className={className} onClick={handleClick}>
-			{content}
+			{stage === 0 ? (
+				content
+			) : (
+				<span dangerouslySetInnerHTML={{ __html: content }} />
+			)}
 		</div>
 	)
 }
