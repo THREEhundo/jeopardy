@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { useState } from 'react'
 import './clue.css'
 
@@ -17,12 +18,40 @@ const Clue = ({ value, clue }) => {
 		content = clue ? clue.answer : null
 		className = `clue`
 	}
+
+	const gridRef = useRef(null)
+
+	useEffect(() => {
+		const gridBoxes = gridRef.current.querySelectorAll('.box')
+		function adjustTextSize(box) {
+			const text = box.textContent,
+				boxWidth = box.offsetWidth,
+				boxHeight = box.offsetHeight
+
+			// Calculate a ratio to adjust font size based on available space
+			const widthRatio = boxWidth / text.length,
+				heightRatio = boxHeight / 2 // Adjust as needed
+
+			// Use the smaller ratio to ensure the text fits within both width and height
+			const ratio = Math.min(widthRatio, heightRatio)
+
+			// Apply the adjusted font size
+			const fontSize = ratio * 0.8 // Adjust the scaling factor
+			box.style.fontSize = `${fontSize}px`
+		}
+
+		gridBoxes.forEach(adjustTextSize)
+	}, [])
+
 	return (
-		<div className={className} onClick={handleClick}>
+		<div ref={gridRef} className={className} onClick={handleClick}>
 			{stage === 0 ? (
 				content
 			) : (
-				<span dangerouslySetInnerHTML={{ __html: content }} />
+				<span
+					className='box'
+					dangerouslySetInnerHTML={{ __html: content }}
+				/>
 			)}
 		</div>
 	)

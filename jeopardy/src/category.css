@@ -2,10 +2,11 @@
 	background-color: blue;
 	color: #fff;
 	margin: 0;
-	padding: 10px;
+	padding: 5px;
 	text-align: center;
 	font-family: Georgia, 'Times New Roman', Times, serif;
-	font-size: 24px;
+	display: flex;
+	align-items: center;
 }
 
 .category {

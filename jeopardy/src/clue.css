@@ -12,4 +12,7 @@
 
 .dollar-value {
 	font-size: 2em;
+	color: #e4b35f;
+	font-weight: 900;
+	text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.9);
 }
