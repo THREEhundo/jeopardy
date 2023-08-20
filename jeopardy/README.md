@@ -1,8 +1,20 @@
-# React + Vite
+# Jeopardy
+The iconic American Game Show, Jeopardy. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Link to project:** http://recruiters-love-seeing-live-demos.com/
 
-Currently, two official plugins are available:
+![alt tag](http://placecorgi.com/1200/650)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How It's Made:
+
+**Tech used:** HTML, CSS, JavaScript, React, Vite, and Express
+
+A React build of the iconic American Game Show, Jeopardy. Utilized API calls to get the categories and clues. React was used for the UI. Express was used to get around the CORS error. 
+
+## Optimizations
+
+Future updates will include animation for the clues to take up the full screen when clicked on, like in the show. Double Jeopardy will be randomly added to select clues. Players, rounds, a timer, and scores will be implemented as well.
+
+## Lessons Learned:
+
+Changing the size of the text dynamically to fit inside the boxes was challenging. Utilizing the useEffect to adjust the size of the font took some time to get right. It could be fine tuned a bit more but I'm generally happy with the results I got from the tests I've run. Getting familiarized with the usecases of the useRef hook was a welcomed part of the project.
