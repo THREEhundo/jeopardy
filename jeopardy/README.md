@@ -3,7 +3,7 @@ The iconic American Game Show, Jeopardy.
 
 **Link to project:** http://recruiters-love-seeing-live-demos.com/
 
-![alt tag](http://placecorgi.com/1200/650)
+![Jeopardy](https://imgur.com/qyur2kv)
 
 ## How It's Made:
 
