@@ -3,10 +3,10 @@
 	color: #fff;
 	margin: 0;
 	padding: 5px;
-	text-align: center;
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
 .category {

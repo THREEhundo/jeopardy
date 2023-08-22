@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Clue from './Clue'
 import './category.css'
 
 const Category = ({ category }) => {
+	const [size, setSize] = useState(1000)
 	const values = [200, 400, 600, 800, 1000]
 
 	const toTitleCase = str =>
@@ -17,24 +18,30 @@ const Category = ({ category }) => {
 
 	useEffect(() => {
 		const gridBoxes = gridRef.current.querySelectorAll('.box')
+
 		function adjustTextSize(box) {
 			const text = box.textContent,
-				boxWidth = box.offsetWidth,
-				boxHeight = box.offsetHeight
+				maxWidth = 200, // Maximum width in pixels
+				maxHeight = 200, // Maximum height in pixels
+				boxWidth = Math.min(box.offsetWidth, maxWidth),
+				boxHeight = Math.min(box.offsetHeight, maxHeight)
 
 			// Calculate a ratio to adjust font size based on available space
 			const widthRatio = boxWidth / text.length,
 				heightRatio = boxHeight / 2 // Adjust as needed
+			console.log(widthRatio, heightRatio)
 
 			// Use the smaller ratio to ensure the text fits within both width and height
 			const ratio = Math.min(widthRatio, heightRatio)
 
-			const fontSize = ratio * 2 // Adjust the scaling factor
-
 			// Apply the adjusted font size
+			const potentialSize = ratio * 0.8 // Adjust the scaling factor
+			const fontSize =
+				potentialSize < 16 && text.length < 30 ? 16 : potentialSize
+
 			box.style.fontSize = `${fontSize}px`
-			console.log(boxWidth)
-			//if (boxWidth > 130) box.style.fontSize = `${fontSize * 2}px`
+
+			return fontSize < size ? setSize(fontSize) : ''
 		}
 
 		gridBoxes.forEach(adjustTextSize)

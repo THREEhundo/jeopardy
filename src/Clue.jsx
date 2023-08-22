@@ -4,6 +4,7 @@ import './clue.css'
 
 const Clue = ({ value, clue }) => {
 	const [stage, setStage] = useState(0)
+	const [size, setSize] = useState(null)
 
 	const handleClick = () => setStage(stage + 1)
 
@@ -25,8 +26,10 @@ const Clue = ({ value, clue }) => {
 		const gridBoxes = gridRef.current.querySelectorAll('.box')
 		function adjustTextSize(box) {
 			const text = box.textContent,
-				boxWidth = box.offsetWidth,
-				boxHeight = box.offsetHeight
+				maxWidth = 200, // Maximum width in pixels
+				maxHeight = 200, // Maximum height in pixels
+				boxWidth = Math.min(box.offsetWidth, maxWidth),
+				boxHeight = Math.min(box.offsetHeight, maxHeight)
 
 			// Calculate a ratio to adjust font size based on available space
 			const widthRatio = boxWidth / text.length,
@@ -36,11 +39,15 @@ const Clue = ({ value, clue }) => {
 			const ratio = Math.min(widthRatio, heightRatio)
 
 			// Apply the adjusted font size
-			const fontSize = ratio * 0.8 // Adjust the scaling factor
+			const potentialSize = ratio * 0.8 // Adjust the scaling factor
+			const fontSize = Math.min(18, potentialSize)
 			box.style.fontSize = `${fontSize}px`
+
+			fontSize < size && setSize(fontSize)
 		}
 
 		gridBoxes.forEach(adjustTextSize)
+		gridBoxes.forEach(x => (x.style.fontSize = `${size}px`))
 	}, [])
 
 	return (
